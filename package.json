@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "webpack --watch --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js"
+    "build": "webpack --config webpack.prod.js",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "keywords": [],
   "author": "",
@@ -29,5 +31,10 @@
   "dependencies": {
     "@babel/runtime": "^7.24.4",
     "written-number": "^0.11.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chenpt3/Chenpt3.github.io.git"
+  },
+  "homepage": "https://chenpt3.github.io"
 }
