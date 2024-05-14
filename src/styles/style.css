@@ -1,3 +1,36 @@
+/* Define global variables */
+:root {
+  --padding: 1.5rem;
+  --font-stack: Arial, sans-serif, "Segoe UI", Roboto, "Droid Sans", "Helvetica Neue", Helvetica, Arial;
+  --bg-color: #f0f0f0; /* Default background color */
+  --text-color: #333; /* Default text color */
+  --primary-color: #007bff; /* Primary color */
+  --secondary-color: #6c757d; /* Secondary color */
+  --success-color: #28a745; /* Success color */
+  --info-color: #17a2b8; /* Info color */
+  --warning-color: #ffc107; /* Warning color */
+  --danger-color: #dc3545; /* Danger color */
+  --light-color: #f8f9fa; /* Light color */
+  --dark-color: #343a40; /* Dark color */
+  --svg-color: invert(13%) sepia(2%) saturate(0%) hue-rotate(357deg) brightness(94%) contrast(80%);
+  background-color: var(--bg-color);
+}
+
+/* Dark theme */
+body.dark-theme {
+  --bg-color: #343a40; /* Dark theme background color */
+  --text-color: #f8f9fa; /* Dark theme text color */
+  --primary-color: #375a7f; /* Primary color */
+  --secondary-color: #444; /* Secondary color */
+  --success-color: #00bc8c; /* Success color */
+  --info-color: #3498db; /* Info color */
+  --warning-color: #f39c12; /* Warning color */
+  --danger-color: #e74c3c; /* Danger color */
+  --light-color: #adb5bd; /* Light color */
+  --dark-color: #f8f9fa; /* Dark color */
+  --svg-color: invert(100%) sepia(1%) saturate(12%) hue-rotate(15deg) brightness(108%) contrast(96%);
+}
+
 /* Resets */
 *, *::after, *::before {
   box-sizing: border-box;
@@ -7,4 +40,170 @@
 
 a {
   text-decoration: none;
+}
+
+ul, li {
+  list-style: none;
+}
+
+/* Body styling */
+body {
+  font-family: Arial, sans-serif, "Segoe UI", Roboto, "Droid Sans", "Helvetica Neue", Helvetica, Arial;
+  display: grid;
+  min-width: 300px;
+  width: 100%;
+  min-height: 100vh;
+  direction: ltr;
+  grid-template-columns: max-content 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "aside header"
+    "aside main"
+    "aside footer";
+  color: var(--text-color);
+  overflow-x: hidden;
+  background-color: var(--bg-color);
+}
+
+/* Header styling */
+header {
+  grid-area: header;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--padding);
+}
+
+/* Aside styling */
+aside {
+  grid-area: aside;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  padding: var(--padding);
+  overflow-x: hidden;
+  transition: width 0.3s ease, padding 0.3s ease, opacity 0.3s ease, visibility 0.3s ease, max-height 0.3s ease;
+}
+
+/* Main styling */
+main {
+  grid-area: main;
+  overflow-y: auto;
+  max-height: calc(100vh - 2*60px);
+  padding: var(--padding);
+}
+
+.home__screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Footer styling */
+footer {
+  grid-area: footer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 1.5rem;
+}
+
+/* Hidden classes */
+.hidden, .header__button-rightMenu {
+  display: none;
+}
+
+.hidden-menu {
+  max-height: 0;
+  padding: 0;
+  width: 0;
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Specific component styling */
+.header__logo, .aside__footer-logo, .footer__logo {
+  width: 200px;
+}
+
+.header__button {
+  width: 40px;
+}
+
+.aside__menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Image styling */
+img {
+  filter: var(--svg-color);
+  cursor: pointer;
+}
+
+ul {
+  cursor: pointer;
+}
+
+/* Media query for screens smaller than 600px */
+@media (max-width: 600px) {
+  body {
+    grid-template-columns: 100%;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+      "header"
+      "main"
+      "footer";
+  }
+
+  .header__div-1, .header__div-2 {
+    display: none;
+    width: 0;
+  }
+
+  aside {
+    width: 0;
+    padding: 0;
+    opacity: 0;
+    visibility: hidden;
+    max-height: 0;
+    transition: width 0.3s ease, padding 0.3s ease, opacity 0.3s ease, visibility 0.3s ease, max-height 0.3s ease;
+  }
+
+  .header__button-left-menu {
+    display: none;
+  }
+
+  .header__button-rightMenu {
+    display: inline;
+  }
+
+  .open-mobile-menu {
+    display: flex;
+    width: 50%;
+    padding: var(--padding);
+    opacity: 1;
+    visibility: visible;
+    max-height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1000;
+    background-color: var(--bg-color);
+    transition: max-height 0.3s ease, padding 0.3s ease, width 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+  }
+
+  footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
 }

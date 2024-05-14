@@ -12,6 +12,7 @@ module.exports = {
       filename: 'index.html',
       template: 'src/index.html',
       inject: 'body',
+      favicon: './dist/favicon.ico',
     }),
   ],
   module: {
@@ -45,5 +46,5 @@ module.exports = {
         type: 'asset/resource',
       },
     ]
-  }
+  },
 }

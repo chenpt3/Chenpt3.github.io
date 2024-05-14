@@ -27,6 +27,7 @@
     "webpack-merge": "^5.10.0"
   },
   "dependencies": {
-    "@babel/runtime": "^7.24.4"
+    "@babel/runtime": "^7.24.4",
+    "written-number": "^0.11.1"
   }
 }
