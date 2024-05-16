@@ -1,6 +1,6 @@
 export default class EventsManager {
-    constructor(domManager, screensManager) {
-        this.domManager = domManager;
+    constructor(screensManager) {
+        this.domManager = screensManager.domManager;
         this.screensManager = screensManager;
         this.addEvents();
     }

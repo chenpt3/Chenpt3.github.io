@@ -1,4 +1,5 @@
 import Home from './screens/home-screen.js';
+import Calculator from './screens/calculator/calculator.js';
 
 export default class ScreensManager {
     constructor(domManager) {
@@ -58,7 +59,7 @@ class Screen {
 class HomeScreen extends Screen {
     constructor(domManager) {
         super(domManager);
-        new Home();
+        new Home(domManager);
     }
 }
 
@@ -71,6 +72,7 @@ class ToDoListScreen extends Screen {
 class CalculatorScreen extends Screen {
     constructor(domManager) {
         super(domManager);
+        new Calculator(this);
     }
 }
 
