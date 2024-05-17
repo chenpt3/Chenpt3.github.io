@@ -33,16 +33,16 @@ export default class ScreensManager {
 }
 
 class Screen {
-    constructor(domManager) {
+    constructor(domManager, className) {
         this.domManager = domManager;
-        this.screen = this.createScreen();
+        this.screen = this.createScreen(className);
         this.screen.classList.add('hidden');
         this.domManager.main.main.appendChild(this.screen);
     }
 
-    createScreen() {
+    createScreen(className) {
         const screen = document.createElement('div');
-        screen.classList.add('screen');
+        screen.classList.add('screen', className);
         return screen;
     }
 
@@ -58,68 +58,68 @@ class Screen {
 
 class HomeScreen extends Screen {
     constructor(domManager) {
-        super(domManager);
+        super(domManager, 'home-screen');
         new Home(domManager);
     }
 }
 
 class ToDoListScreen extends Screen {
     constructor(domManager) {
-        super(domManager);
+        super(domManager, 'todo-list-screen');
     }
 }
 
 class CalculatorScreen extends Screen {
     constructor(domManager) {
-        super(domManager);
+        super(domManager, 'calculator-screen');
         new Calculator(this);
     }
 }
 
 class WeatherAppScreen extends Screen {
     constructor(domManager) {
-        super(domManager);
+        super(domManager, 'weather-app-screen');
     }
 }
 
 class connectFourScreen extends Screen {
     constructor(domManager) {
-        super(domManager);
+        super(domManager, 'connect-four-screen');
     }
 }
 
 class RockPaperScissorsScreen extends Screen {
     constructor(domManager) {
-        super(domManager);
+        super(domManager, 'rock-paper-scissors-screen');
     }
 }
 
 class ChessScreen extends Screen {
     constructor(domManager) {
-        super(domManager);
+        super(domManager, 'chess-screen');
     }
 }
 
 class CheckersScreen extends Screen {
     constructor(domManager) {
-        super(domManager);
+        super(domManager, 'checkers-screen');
     }
 }
 
 class MineSweeperScreen extends Screen {
     constructor(domManager) {
-        super(domManager);
+        super(domManager, 'mine-sweeper-screen');
     }
 }
 
 class TicTacToeScreen extends Screen {
     constructor(domManager) {
-        super(domManager);
+        super(domManager, 'tic-tac-toe-screen');
     }
 }
 
 class TwentyFortyEightScreen extends Screen {
     constructor(domManager) {
-        super(domManager);
+        super(domManager, 'twenty-forty-eight-screen');
     }
 }
