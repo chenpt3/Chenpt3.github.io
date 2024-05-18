@@ -1,5 +1,4 @@
-import Home from './screens/home-screen.js';
-import Calculator from './screens/calculator/calculator.js';
+import Calculator from 'calc-port-pack';
 
 export default class ScreensManager {
     constructor(domManager) {
@@ -27,11 +26,14 @@ export default class ScreensManager {
         if (this.activeScreen) {
             this.clearScreen();
         }
+
         const ScreenClass = this.screenClasses[screen] || HomeScreen;
         this.activeScreen = new ScreenClass(this.domManager, this.screenCache[`${screen}-screen`]);
+
         if (this.screenCache[`${screen}-screen`]) {
             this.activeScreen.screenState = this.screenCache[`${screen}-screen`];
         }
+        
         this.screenState = this.activeScreen.screenState;
     }
 
@@ -41,7 +43,6 @@ export default class ScreensManager {
 
         this.activeScreen = null;
         this.domManager.main.main.innerHTML = '';
-
     }
 }
 
@@ -62,7 +63,6 @@ class Screen {
 class HomeScreen extends Screen {
     constructor(domManager) {
         super(domManager, 'home-screen');
-        new Home(domManager);
     }
 }
 
@@ -75,8 +75,8 @@ class ToDoListScreen extends Screen {
 class CalculatorScreen extends Screen {
     constructor(domManager, state) {
         super(domManager, 'calculator-screen');
-        const calc = new Calculator(this, state);
-        this.screenState = calc.state;
+        const calculator = new Calculator(this, state);
+        this.screenState = calculator.state;
     }
 }
 
