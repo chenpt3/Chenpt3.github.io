@@ -20,7 +20,7 @@ export default class EventsManager {
     addHeaderLogoEvent() {
         const logo = this.domManager.header.logo;
         logo.addEventListener('click', () => {
-            this.screensManager.showScreen(this.screensManager.home);
+            this.screensManager.createCurrentScreen('home');
         });
     }
 
@@ -69,9 +69,12 @@ export default class EventsManager {
         const menuList = this.domManager.aside.asideMenuList;
         menuList.addEventListener('click', (e) => {
             const menuItem = e.target;
-            const page = menuItem.dataset.page;
-            if (page) {
-                this.screensManager.showScreen(this.screensManager[page]);
+            const screen = menuItem.dataset.page;
+            if (screen) {
+                if (this.screensManager.activeScreen) {
+                    this.screensManager.clearScreen();
+                }
+                this.screensManager.createCurrentScreen(screen);
             }
         });
     }
@@ -79,7 +82,7 @@ export default class EventsManager {
     addMenuFooterEvent() {
         const footerLogo = this.domManager.aside.asideMenuFooter;
         footerLogo.addEventListener('click', () => {
-            this.screensManager.showScreen(this.screensManager.home);
+            this.screensManager.createCurrentScreen('home');
         });
     }
 
@@ -90,7 +93,7 @@ export default class EventsManager {
     addFooterLogoEvent() {
         const logo = this.domManager.footer.footerLogo;
         logo.addEventListener('click', () => {
-            this.screensManager.showScreen(this.screensManager.home);
+            this.screensManager.createCurrentScreen('home');
         });
     }
 }

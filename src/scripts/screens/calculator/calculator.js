@@ -306,10 +306,14 @@ class CalculatorEvents {
     }
 }
 export default class Calculator {
-    constructor(calculatorScreen) {
+    constructor(calculatorScreen, state) {
         this.creator = calculatorScreen.domManager.creator;
         this.CalculatorBrain = new CalculatorBrain();
         this.CalculatorDom = new CalculatorDom(calculatorScreen, this.creator);
         this.CalculatorEvents = new CalculatorEvents(this.CalculatorDom, this.CalculatorBrain);
+        if (state) {
+            this.CalculatorDom.calculatorOutput.textContent = state.textContent;
+        }
+        this.state = this.CalculatorDom.calculatorOutput;
     }
 }
