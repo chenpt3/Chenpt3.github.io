@@ -95,14 +95,6 @@ main {
   padding: var(--padding);
 }
 
-.home__screen {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-}
-
 /* Footer styling */
 footer {
   grid-area: footer;
