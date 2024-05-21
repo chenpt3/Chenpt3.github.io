@@ -1,3 +1,4 @@
+import ToDoList from './to-do-list.js';
 import Calculator from 'calc-port-pack';
 
 export default class ScreensManager {
@@ -8,16 +9,16 @@ export default class ScreensManager {
         this.screenState = {};
         this.screenClasses = {
             'home': HomeScreen,
-            'todo-list': ToDoListScreen,
+            'toDoList': ToDoListScreen,
             'calculator': CalculatorScreen,
-            'weather-app': WeatherAppScreen,
-            'connect-four': connectFourScreen,
-            'rock-paper-scissors': RockPaperScissorsScreen,
+            'weatherApp': WeatherAppScreen,
+            'connectFour': connectFourScreen,
+            'rockPaperScissors': RockPaperScissorsScreen,
             'chess': ChessScreen,
             'checkers': CheckersScreen,
-            'mine-sweeper': MineSweeperScreen,
-            'tic-tac-toe': TicTacToeScreen,
-            'twenty-forty-eight': TwentyFortyEightScreen
+            'mineSweeper': MineSweeperScreen,
+            'ticTacToe': TicTacToeScreen,
+            'twoThousandFortyeight': TwentyFortyEightScreen
         };
         this.createCurrentScreen('home-screen');
     }
@@ -26,7 +27,6 @@ export default class ScreensManager {
         if (this.activeScreen) {
             this.clearScreen();
         }
-
         const ScreenClass = this.screenClasses[screen] || HomeScreen;
         this.activeScreen = new ScreenClass(this.domManager, this.screenCache[`${screen}-screen`]);
 
@@ -40,7 +40,6 @@ export default class ScreensManager {
     clearScreen() {
         this.screenState = this.activeScreen.screenState;
         this.screenCache[this.activeScreen.screen.classList[1]] = this.screenState;
-
         this.activeScreen = null;
         this.domManager.main.main.innerHTML = '';
     }
@@ -63,12 +62,32 @@ class Screen {
 class HomeScreen extends Screen {
     constructor(domManager) {
         super(domManager, 'home-screen');
+        this.populateHomeScreen();
+    }
+
+    populateHomeScreen() {
+        const homeScreen = this.screen;
+        const homeScreenContent = document.createElement('div');
+        homeScreenContent.classList.add('home-screen-content');
+        homeScreen.appendChild(homeScreenContent);
+
+        const homeScreenTitle = document.createElement('h1');
+        homeScreenTitle.classList.add('home-screen-title');
+        homeScreenTitle.textContent = 'Welcome to the Home Screen!';
+        homeScreenContent.appendChild(homeScreenTitle);
+
+        const homeScreenDescription = document.createElement('p');
+        homeScreenDescription.classList.add('home-screen-description');
+        homeScreenDescription.textContent = 'Please select a game or app from the menu to begin.';
+        homeScreenContent.appendChild(homeScreenDescription);
     }
 }
 
 class ToDoListScreen extends Screen {
-    constructor(domManager) {
-        super(domManager, 'todo-list-screen');
+    constructor(domManager, state) {
+        super(domManager, 'toDoList-screen');
+        const toDoList = new ToDoList(this, state);
+        this.screenState = toDoList.state;
     }
 }
 
@@ -82,19 +101,19 @@ class CalculatorScreen extends Screen {
 
 class WeatherAppScreen extends Screen {
     constructor(domManager) {
-        super(domManager, 'weather-app-screen');
+        super(domManager, 'weatherApp-screen');
     }
 }
 
 class connectFourScreen extends Screen {
     constructor(domManager) {
-        super(domManager, 'connect-four-screen');
+        super(domManager, 'connectFour-screen');
     }
 }
 
 class RockPaperScissorsScreen extends Screen {
     constructor(domManager) {
-        super(domManager, 'rock-paper-scissors-screen');
+        super(domManager, 'rockPaperScissors-screen');
     }
 }
 
@@ -112,18 +131,18 @@ class CheckersScreen extends Screen {
 
 class MineSweeperScreen extends Screen {
     constructor(domManager) {
-        super(domManager, 'mine-sweeper-screen');
+        super(domManager, 'mineSweeper-screen');
     }
 }
 
 class TicTacToeScreen extends Screen {
     constructor(domManager) {
-        super(domManager, 'tic-tac-toe-screen');
+        super(domManager, 'ticTacToe-screen');
     }
 }
 
 class TwentyFortyEightScreen extends Screen {
     constructor(domManager) {
-        super(domManager, 'twenty-forty-eight-screen');
+        super(domManager, 'twentyFortyEight-screen');
     }
 }

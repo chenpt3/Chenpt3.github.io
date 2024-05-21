@@ -1,0 +1,103 @@
+/* Container */
+.to-do-container {
+    width: 80%;
+    margin: 0 auto;
+    padding: var(--padding);
+    background-color: var(--bg-color);
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Increase shadow for more depth */
+}
+
+/* Form */
+.to-do-form {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.to-do-input {
+    flex: 1;
+    padding: 10px;
+    border: 2px solid var(--dropdown-border-color); /* Increase border thickness */
+    border-radius: 5px;
+}
+
+.to-do-button {
+    margin-left: 10px;
+    padding: 10px 20px;
+    background-color: var(--primary-color-dark); /* Use darker primary color */
+    color: var(--text-color-light); /* Use lighter text color */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.to-do-button:hover {
+    background-color: var(--dropdown-option-hover-color-dark); /* Use darker hover color */
+}
+
+/* Task list */
+.to-do-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.to-do-task {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: var(--light-color-dark); /* Use darker light color */
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Increase shadow for more depth */
+}
+
+.to-do-description {
+    flex: 1;
+}
+
+.to-do-priority {
+    background-color: var(--warning-color-dark); /* Use darker warning color */
+    border-radius: 5px;
+    color: var(--text-color-light); /* Use lighter text color */
+}
+
+.to-do-buttons {
+    display: flex;
+}
+
+.to-do-edit, .to-do-delete, .to-do-complete {
+    margin-left: 10px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.to-do-edit {
+    background-color: var(--success-color-dark); /* Use darker success color */
+    color: var(--text-color-light); /* Use lighter text color */
+}
+
+.to-do-delete {
+    background-color: var(--danger-color-dark); /* Use darker danger color */
+    color: var(--text-color-light); /* Use lighter text color */
+}
+
+.to-do-complete {
+    background-color: var(--info-color-dark); /* Use darker info color */
+    color: var(--text-color-light); /* Use lighter text color */
+}
+
+.to-do-edit:hover {
+    background-color: var(--success-color);
+}
+
+.to-do-delete:hover {
+    background-color: var(--danger-color);
+}
+
+.to-do-complete:hover {
+    background-color: var(--info-color);
+}
