@@ -70,6 +70,7 @@ class ToDoDOM {
         this.createContainer();
         this.createTaskForm();
         this.createTaskList();
+        this.editingTaskId = null;
     }
 
     createDOMElement(type, className, parent) {
@@ -96,7 +97,7 @@ class ToDoDOM {
         const form = this.createDOMElement('form', 'to-do-form', this.container);
         const input = this.createDOMElement('input', 'to-do-input', form);
         input.placeholder = 'Add a task...';
-        input.maxLength = 25;
+        input.maxLength = 100;
         const priority = new this.Components.Dropdown(form, 'Priority', ['Low', 'Normal', 'High'], 'Normal');
         const priorityElement = form.querySelector('.dropdown-container');
         priorityElement.classList.add('to-do-priority');
@@ -202,6 +203,11 @@ class ToDoDOM {
     }
 
     editTask(task, taskElement) {
+        if (this.editingTaskId !== null) {
+            return;
+        }
+        this.editingTaskId = task.id;
+
         taskElement.innerHTML = '';
         const input = this.createInput(task.description, taskElement);
         const priority = new this.Components.Dropdown(taskElement, task.priority, ['Low', 'Normal', 'High'], task.priority);
@@ -209,13 +215,14 @@ class ToDoDOM {
         priorityElement.classList.add('task-priority-dropdown');
         const buttons = this.createDOMElement('div', 'to-do-task-buttons', taskElement);
         const saveButton = this.createSaveButton(task, input, priority, buttons, taskElement);
+        const cancelButton = this.createCancelButton(buttons);
         buttons.appendChild(saveButton);
     }
 
     createInput(value, parent) {
         const input = this.createDOMElement('input', 'to-do-task-input', parent);
         input.value = value;
-        input.maxLength = 25;
+        input.maxLength = 100;
         return input;
     }
 
@@ -235,7 +242,16 @@ class ToDoDOM {
                 this.logic.setPriority(task.id, newPriority);
                 this.updateTaskList();
             }
+            this.editingTaskId = null;
         }, parent);
         return saveButton;
+    }
+
+    createCancelButton(parent) {
+        const cancelButton = this.createButton('Cancel', 'to-do-cancel', () => {
+            this.updateTaskList();
+            this.editingTaskId = null;
+        }, parent);
+        return cancelButton;
     }
 }

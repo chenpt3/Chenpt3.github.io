@@ -32,6 +32,9 @@
   --edit-button-color-hover: #b38600;
   --save-button-color:  #20ac25;
   --save-button-color-hover: #198c1f;
+  --cancel-button-color: #808080; /* Grey color */
+  --cancel-button-color-hover: #666666;
+  
   background-color: var(--bg-color);
 }
 
@@ -57,11 +60,13 @@ body.dark-theme {
   --add-button-color-hover: #003d7a; /* Darker version of #0056b3 */
   --edit-button-color: #b38600; /* Darker version of #ffc107 */
   --edit-button-color-hover: #8a6600; /* Darker version of #b38600 */
+  --cancel-button-color: #808080; /* Grey color for dark theme */
+  --cancel-button-color-hover: #666666;
   --delete-button-color: #a0273a; /* Darker version of #dc3545 */
   --delete-button-color-hover: #7a1f2d; /* Darker version of #a0273a */
   --complete-button-color: #198c1f; /* Darker version of #20ac25 */
   --complete-button-color-hover: #146a18; /* Darker version of #198c1f */
-  --text-color-light: #fff;
+  --text-color-light: #ffbdbd;
   --task-color: #222;
   --priority-background-color: #ff7f0e;
   --text-color-greyed: #7f7f7f;

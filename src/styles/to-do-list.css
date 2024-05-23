@@ -25,6 +25,8 @@
     border-radius: 5px;
     font-size: 1rem;
     height: 40px;
+    background-color: var(--task-color); /* Use darker light color */
+    color: var(--text-color); /* Use default text color */
 }
 
 .to-do-priority {
@@ -164,6 +166,7 @@
 
 /* Save button */
 .to-do-save {
+    width: 100px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -181,6 +184,28 @@
 }
 
 .to-do-save:active {
+    transform: scale(0.95);
+}
+
+.to-do-cancel {
+    width: 100px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 5px 10px;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+    color: #fafafa;
+    background-color: var(--cancel-button-color);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Increase shadow for more depth */
+}
+
+.to-do-cancel:hover {
+    background-color: var(--cancel-button-color-hover);
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.2);
+}
+
+.to-do-cancel:active {
     transform: scale(0.95);
 }
 
